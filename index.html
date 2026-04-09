@@ -1,11 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Script TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font - Noto Sans Thai -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Student Registration</title>
 </head>
-<body>
-    
+
+<body class="bg-gray-100 font-[Kanit]">
+    <!-- Nav bar -->
+    <nav class="sticky top-0 w-full flex flex-wrap justify-center p-4 space-x-48 bg-white shadow-md">
+        <div class="flex items-center space-x-4">
+            <img class="" src="images/logo.png" alt="Logo" width="100">
+            <h1 class="text-lg md:text-2xl font-semibold">Student Registration</h1>
+        </div>
+        <div>
+            <button
+                class="m-4 p-4 rounded-xl shadow-md text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-sky-400"
+                id="submitBtn">ลงทะเบียน</button>
+        </div>
+    </nav>
+
+    <!-- form -->
+    <div class="m-4 md:m-20 p-10 md:p-20 bg-white rounded-lg shadow-md">
+        <form id="RegisForm" class="space-y-4">
+            <!-- full name -->
+            <div>
+                <label for="fullName-Input">Student Name</label>
+                <input class="w-full mt-1 p-2 rounded-lg border-2 border-gray-500 focus:ring-2 focus:ring-blue-500"
+                    type="text" id="fullName-Input" name="fullname" required>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- student id -->
+                <div>
+                    <label for="stID-input">Student ID</label>
+                    <input class="w-full mt-1 p-2 rounded-lg border-2 border-gray-500 focus:ring-2 focus:ring-blue-500"
+                        type="text" id="stID-input" name="stID" required>
+                </div>
+                <!-- department -->
+                <div>
+                    <label for="department">Department</label>
+                    <select class="w-full mt-1 p-2 rounded-lg border-2 border-gray-500 focus:ring-2 focus:ring-blue-500"
+                        name="department" id="department" required>
+                        <option value="">Choose department</option>
+                        <option value="comp">CoC - Comp</option>
+                        <option value="de">CoC - DE</option>
+                        <option value="dbiz">CoC - Dbiz</option>
+                        <option value="aise">CoC - AISE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="email">Email</label>
+                    <input class="w-full mt-1 p-2 rounded-lg border-2 border-gray-500 focus:ring-2 focus:ring-blue-500"
+                        type="email" id="emailInput" name="email">
+                </div>
+
+                <div>
+                    <label for="tel">Tel.</label>
+                    <input class="w-full mt-1 p-2 rounded-lg border-2 border-gray-500 focus:ring-2 focus:ring-blue-500"
+                        type="text" id="tel" name="text">
+                </div>
+            </div>
+        </form>
+
+        <div id="RegisSubmited" class="hidden flex justify-center items-center">
+            <div class="space-y-4">
+                <img src="images/submit.png" alt="submit" width="200">
+                <h3 class="text-2xl">ลงทะเบียนสำเร็จ !</h3>
+                <button id="backHome" class="p-4 hover:bg-gray-200 rounded-lg">กลับไปหน้าลงทะเบียน</button>
+            </div>
+        </div>
+    </div>
 </body>
+
+<script>
+    // ปุ่มลงทะเบียน
+    let submitBtn = document.getElementById("submitBtn");
+    let formState = document.getElementById("RegisForm");
+    let submitState = document.getElementById("RegisSubmited");
+    let backHome = document.getElementById("backHome");
+    // จับ event การ click
+    submitBtn.addEventListener('click', submitForm);
+    backHome.addEventListener('click', back);
+    // ฟังก์ชัน
+    function submitForm() {
+        console.log("✅ submited!");
+
+        formState.style.display = "none";
+        submitState.style.display = "flex";
+
+        event.preventDefault();
+    };
+
+    function back(){
+        console.log("back");
+
+        formState.style.display = "block";
+        submitState.style.display = "none";
+
+        event.preventDefault();
+    };
+
+
+</script>
+
 </html>
